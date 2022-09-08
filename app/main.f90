@@ -19,7 +19,9 @@ program tsunami
    if (c <= 0) stop 'background flow speed c must be > 0.'
    if (grid_size <= 0) stop 'grid size must be >0.'
 
-   do i = 1, grid_size
+   ! initializing the values of height array h
+
+   do concurrent(i=1:grid_size)
       h(i) = exp(-decay*(i - icenter)**2)
    end do
 
